@@ -8,8 +8,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Provider<DogApiService>(
-      create: (context) => DogApiService(),
+    return MultiProvider(
+      providers: [
+        Provider<DogApiService>(create: (context) => DogApiService()),
+      ],
       child: MaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
