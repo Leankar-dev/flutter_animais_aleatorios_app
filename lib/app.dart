@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animais_aleatorios_app/caes_aleatorios/services/dog_api_service.dart';
-import 'package:flutter_animais_aleatorios_app/menu/menu_screen.dart';
+import 'package:flutter_animais_aleatorios_app/routes.dart';
 import 'package:provider/provider.dart';
 
 class MyApp extends StatelessWidget {
@@ -13,8 +13,9 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-        home: const MenuScreen(),
+        theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)),
+        initialRoute: AppRoutes.menu,
+        routes: AppRoutes.routes,
       ),
     );
   }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animais_aleatorios_app/caes_aleatorios/screens/caes_home_screen.dart';
-import 'package:flutter_animais_aleatorios_app/gatos_aleatorios/screens/gatos_home_screen.dart';
+import 'package:flutter_animais_aleatorios_app/routes.dart';
 import 'package:flutter_animais_aleatorios_app/widgets/gradient_elevated_button.dart';
 
 class MenuScreen extends StatelessWidget {
@@ -16,26 +15,12 @@ class MenuScreen extends StatelessWidget {
           children: [
             GradientElevatedButton(
               label: 'Cães Aleatórios',
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const CaesHomeScreen(),
-                  ),
-                );
-              },
+              onPressed: () => Navigator.pushNamed(context, AppRoutes.caes),
             ),
             const SizedBox(height: 16),
             GradientElevatedButton(
               label: 'Gatos Aleatórios',
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const GatosHomeScreen(),
-                  ),
-                );
-              },
+              onPressed: () => Navigator.pushNamed(context, AppRoutes.gatos),
             ),
           ],
         ),

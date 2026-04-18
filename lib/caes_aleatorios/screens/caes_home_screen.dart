@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animais_aleatorios_app/routes.dart';
 import 'package:flutter_animais_aleatorios_app/widgets/gradient_fab.dart';
 
 class CaesHomeScreen extends StatelessWidget {
@@ -13,7 +14,7 @@ class CaesHomeScreen extends StatelessWidget {
         backgroundColor: Colors.blue[200],
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () => Navigator.pushNamed(context, AppRoutes.caesSettings),
             icon: const Icon(Icons.settings),
           ),
         ],
