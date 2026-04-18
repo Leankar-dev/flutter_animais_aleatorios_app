@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animais_aleatorios_app/caes_aleatorios/controllers/dogs_color_controller.dart';
+import 'package:provider/provider.dart';
 
 class GradientFAB extends StatelessWidget {
   const GradientFAB({
     super.key,
     required this.onPressed,
     required this.icon,
-    this.darkColor = Colors.blue,
-    this.lightColor = Colors.blueAccent,
     this.size = 56.0,
     this.iconColor = Colors.black,
     this.elevation = 6.0,
@@ -14,8 +14,6 @@ class GradientFAB extends StatelessWidget {
 
   final VoidCallback? onPressed;
   final IconData icon;
-  final Color darkColor;
-  final Color lightColor;
   final double size;
   final Color iconColor;
   final double elevation;
@@ -23,12 +21,14 @@ class GradientFAB extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isDisabled = onPressed == null;
+    final mainColor = context.watch<DogsColorController>().mainColor;
+    final lightColor = Color.lerp(mainColor, Colors.white, 0.4)!;
 
     return PhysicalShape(
       clipper: const ShapeBorderClipper(shape: CircleBorder()),
       elevation: isDisabled ? 0 : elevation,
       color: Colors.transparent,
-      shadowColor: darkColor.withValues(alpha: 0.5),
+      shadowColor: mainColor.withValues(alpha: 0.5),
       child: DecoratedBox(
         decoration: BoxDecoration(
           shape: BoxShape.circle,
@@ -37,7 +37,7 @@ class GradientFAB extends StatelessWidget {
             end: Alignment.bottomRight,
             colors: isDisabled
                 ? [Colors.grey.shade400, Colors.grey.shade300]
-                : [lightColor, darkColor],
+                : [lightColor, mainColor],
           ),
         ),
         child: Material(
