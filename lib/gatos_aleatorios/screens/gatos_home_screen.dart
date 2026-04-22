@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animais_aleatorios_app/gatos_aleatorios/controllers/cats_home_controller.dart';
+import 'package:flutter_animais_aleatorios_app/gatos_aleatorios/controllers/cats_theme_controller.dart';
 import 'package:flutter_animais_aleatorios_app/routes.dart';
 import 'package:flutter_animais_aleatorios_app/widgets/gradient_fab.dart';
 import 'package:provider/provider.dart';
@@ -9,11 +10,22 @@ class GatosHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Consumer<CatsThemeController>(
+      builder: (context, themeController, child) => Theme(
+        data: themeController.getTheme(context),
+        child: _GatosHomeContent(),
+      ),
+    );
+  }
+}
+
+class _GatosHomeContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Gatos Aleatórios'),
         centerTitle: true,
-        backgroundColor: Colors.blue[200],
         actions: [
           IconButton(
             onPressed: () =>
